@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "private": true,
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^5.0.0",
+    "vite-plugin-ruby": "^5.1.0"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@inertiajs/vue3": "^2.0.3",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.0.9",
+    "tailwindcss": "^4.0.9",
+    "vue": "^3.5.13",
+    "vue-select": "^4.0.0-beta.6"
+  }
+}

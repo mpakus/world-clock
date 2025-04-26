@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:12.12-alpine
+    container_name: world_clock_db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  world_clock:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    container_name: world_clock_web
+    restart: always
+    volumes:
+      - .:/app
+    environment:
+      RAILS_ENV: 'production'
+    depends_on:
+      - db
+    networks:
+      - internal
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.world_clock.rule=Host(`world-clock.com`)
+      - traefik.http.routers.world_clock.entrypoints=websecure
+      - traefik.http.routers.world_clock.tls=true
+      - traefik.http.routers.world_clock.tls.certresolver=letsencrypt
+      - traefik.http.services.world_clock.loadbalancer.server.port=3000
+
+networks:
+  traefik-public:
+    external: true
+  internal:
+    external: false
+
+volumes:
+  pg_data:
+    name: world_clock_pg_data
+    external: true
