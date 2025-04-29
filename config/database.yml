@@ -45,6 +45,7 @@ production:
     database: world_clock_production
     username: world_clock
     password: <%= ENV["WORLD_CLOCK_DATABASE_PASSWORD"] %>
+    port: 15432
 #  cache:
 #    <<: *primary_production
 #    database: world_clock_production_cache
