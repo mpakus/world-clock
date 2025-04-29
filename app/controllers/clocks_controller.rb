@@ -44,6 +44,7 @@ class ClocksController < ApplicationController
     @timezones ||= Timezone.order(utc: :asc)
   end
 
+  # @return [Space]
   def space
     return @space if defined? @space
 
@@ -56,6 +57,7 @@ class ClocksController < ApplicationController
 
     @space = Space.create!(token: SecureRandom.hex(16))
     cookies.permanent[:space] = @space.token
+    @space
   end
 
   def space_timezones
