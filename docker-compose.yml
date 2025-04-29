@@ -30,7 +30,7 @@ services:
       - traefik-public
     labels:
       - traefik.enable=true
-      - traefik.http.routers.world_clock.rule=Host(`world-clock.com`)
+      - traefik.http.routers.world_clock.rule=Host(`1537paperstreet.org`)
       - traefik.http.routers.world_clock.entrypoints=websecure
       - traefik.http.routers.world_clock.tls=true
       - traefik.http.routers.world_clock.tls.certresolver=letsencrypt
