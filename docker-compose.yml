@@ -23,6 +23,7 @@ services:
       - .:/app
     environment:
       RAILS_ENV: 'production'
+      RAILS_MASTER_KEY: '12acc0bcf07ead1281a473bae3cec3ea'
     depends_on:
       - db
     networks:
