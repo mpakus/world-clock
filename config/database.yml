@@ -46,7 +46,7 @@ production:
     username: 'postgres'
     password: 'password'
     host: 'world_clock_db'
-    port: 15432
+    port: 5432
 #  cache:
 #    <<: *primary_production
 #    database: world_clock_production_cache
