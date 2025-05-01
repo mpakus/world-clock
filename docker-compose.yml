@@ -1,5 +1,5 @@
 services:
-  db:
+  world_clock_db:
     image: postgres:12.12-alpine
     container_name: world_clock_db
     restart: unless-stopped
@@ -25,7 +25,7 @@ services:
       RAILS_ENV: 'production'
       RAILS_MASTER_KEY: '12acc0bcf07ead1281a473bae3cec3ea'
     depends_on:
-      - db
+      - world_clock_db
     networks:
       - internal
       - traefik-public
