@@ -12,31 +12,31 @@
 
 ActiveRecord::Schema[8.0].define(version: 2025_04_25_232826) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
+  enable_extension 'pg_catalog.plpgsql'
 
-  create_table "locations", force: :cascade do |t|
-    t.bigint "space_id", null: false
-    t.bigint "timezone_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["space_id"], name: "index_locations_on_space_id"
-    t.index ["timezone_id"], name: "index_locations_on_timezone_id"
+  create_table 'locations', force: :cascade do |t|
+    t.bigint 'space_id', null: false
+    t.bigint 'timezone_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['space_id'], name: 'index_locations_on_space_id'
+    t.index ['timezone_id'], name: 'index_locations_on_timezone_id'
   end
 
-  create_table "spaces", force: :cascade do |t|
-    t.string "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'spaces', force: :cascade do |t|
+    t.string 'token'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "timezones", force: :cascade do |t|
-    t.string "tz"
-    t.string "utc"
-    t.string "names", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'timezones', force: :cascade do |t|
+    t.string 'tz'
+    t.string 'utc'
+    t.string 'names', default: [], array: true
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "locations", "spaces"
-  add_foreign_key "locations", "timezones"
+  add_foreign_key 'locations', 'spaces'
+  add_foreign_key 'locations', 'timezones'
 end

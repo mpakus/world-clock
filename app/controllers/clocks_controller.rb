@@ -16,10 +16,10 @@ class ClocksController < ApplicationController
   def create
     if timezone_code_param.blank?
       return render inertia: 'Clocks/New',
-             props: {
-               timezones: timezones_prepared,
-               errors: { timezone: 'Select Timezone' }
-             }
+                    props: {
+                      timezones: timezones_prepared,
+                      errors: { timezone: 'Select Timezone' }
+                    }
     end
     space.locations.create(time_params)
     redirect_to clock_path(id: space.token)
